@@ -1,6 +1,6 @@
 name: proto_checks
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   proto_checks:
