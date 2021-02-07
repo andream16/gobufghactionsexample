@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: wizhi/setup-buf@v1
         with:
-          version: '0.25.0'
+          version: '0.36.0'
       - uses: arduino/setup-protoc@v1
         with:
           version: '3.x'
@@ -28,7 +28,7 @@ jobs:
           go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
       - name: Generating protos
         run: |
-          protoc --proto_path=$PROTO_DIR --go_out=plugins=grpc:$GEN_OUT_DIR --go_opt=paths=source_relative $(find $PROTO_DIR -type f -name '*.proto')
+          protoc --I=$PROTO_DIR --go_out=$GEN_OUT_DIR $(find $PROTO_DIR -type f -name '*.proto')
         env:
           GEN_OUT_DIR: contracts/build/go
           PROTO_DIR: contracts/proto

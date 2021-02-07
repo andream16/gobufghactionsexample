@@ -6,7 +6,7 @@ PROJECT := gobufghactionsexample
 # See https://buf.build/docs/inputs#ssh for more details.
 SSH_GIT := ssh://git@github.com/andream16/gobufghactionsexample.git
 # This controls the version of buf to install and use.
-BUF_VERSION := 0.25.0
+BUF_VERSION := 0.36.0
 # This controls the version of protoc to install and use.
 PROTOC_VERSION := 3.7.1
 # Protoc zip name used for installing protoc
@@ -91,9 +91,7 @@ breaking:
 gen:
 	@rm -rf $(GEN_OUT_DIR)
 	@mkdir -p $(GEN_OUT_DIR)
-	@protoc -I=$(PROTO_DIR) \
-			--go_out=$(GEN_OUT_DIR) \
-			$(PROTO_FILES)
+	@buf generate
 
 # clean deletes any files not checked in and the cache for all platforms.
 .PHONY: clean
