@@ -1,12 +1,15 @@
 version: v1beta1
+
 build:
   roots:
     - contracts/proto
+
 lint:
   use:
     - BASIC
     - FILE_LOWER_SNAKE_CASE
   service_suffix: SERVICE
+
 breaking:
   use:
     - WIRE_JSON
