@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package gobufghactionsexample.blog.post.v1;
+
+option go_package = "github.com/andream16/gobufghactionsexample/blog/post/v1";
+
+// PostAPI is responsible for managing post.
+service PostAPI {
+  // Create creates a new user.
+  rpc Create(CreateRequest) returns (CreateResponse);
+}
+
+message CreateRequest {
+  string Title = 1;
+}
+
+message CreateResponse {
+  string id = 1;
+}
