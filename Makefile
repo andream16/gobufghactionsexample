@@ -70,7 +70,7 @@ $(PROTOC):
 
 # local is meant to be used locally
 .PHONY: local
-local: $(BUF) $(PROTOC_GEN_GO)
+local: $(PROTOC) $(BUF) $(PROTOC_GEN_GO)
 	@make clean
 	@make lint
 	@make breaking
@@ -91,7 +91,9 @@ breaking:
 gen:
 	@rm -rf $(GEN_OUT_DIR)
 	@mkdir -p $(GEN_OUT_DIR)
-	@protoc --proto_path=$(PROTO_DIR) --go_out=plugins=grpc:$(GEN_OUT_DIR) --go_opt=paths=source_relative $(PROTO_FILES)
+	@protoc -I=$(PROTO_DIR) \
+			--go_out=$(GEN_OUT_DIR) \
+			$(PROTO_FILES)
 
 # clean deletes any files not checked in and the cache for all platforms.
 .PHONY: clean
