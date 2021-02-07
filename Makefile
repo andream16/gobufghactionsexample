@@ -89,9 +89,10 @@ breaking:
 # gen generates go stubs from protos
 .PHONY: gen
 gen:
-	@rm -rf $(GEN_OUT_DIR)
-	@mkdir -p $(GEN_OUT_DIR)
-	@buf generate
+	@mkdir -p contracts/build/go
+	@protoc -I=$(PROTO_DIR) \
+		--go_out=$(GEN_OUT_DIR) \
+		$(PROTO_FILES)
 
 # clean deletes any files not checked in and the cache for all platforms.
 .PHONY: clean
