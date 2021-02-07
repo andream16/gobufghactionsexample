@@ -21,7 +21,7 @@ jobs:
       - name: Running linter, checking breaking changes
         run: |
           buf check lint
-          buf check breaking --against-input ".git#${{ github.base_ref }}"
+          buf check breaking --against-input ".git#branch=${{ github.base_ref }}"
       - name: Installing protoc-gen-go
         run: |
           go get github.com/golang/protobuf/protoc-gen-go
