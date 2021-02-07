@@ -4,14 +4,14 @@ package gobufghactionsexample.blog.post.v1;
 
 option go_package = "github.com/andream16/gobufghactionsexample/blog/post/v1";
 
-// PostAPI is responsible for managing post.
-service PostAPI {
+// PostService is responsible for managing post.
+service PostService {
   // Create creates a new user.
   rpc Create(CreateRequest) returns (CreateResponse);
 }
 
 message CreateRequest {
-  string Title = 1;
+  string title = 1;
 }
 
 message CreateResponse {

@@ -81,10 +81,10 @@ local: $(BUF) $(PROTOC_GEN_GO)
 lint:
 	@buf check lint
 
-# breaking checks for breaking changes against master
+# breaking checks for breaking changes against main
 .PHONY: breaking
 breaking:
-	@buf check breaking --against-input "$(SSH_GIT)#branch=master"
+	@buf check breaking --against-input "$(SSH_GIT)#branch=main"
 
 # gen generates go stubs from protos
 .PHONY: gen
