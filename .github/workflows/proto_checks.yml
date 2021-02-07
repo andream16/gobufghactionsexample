@@ -17,11 +17,11 @@ jobs:
 
       - name: Fetching base branch
         run: |
-          git fetch -u origin ${{ github.base_ref }}:${{ github.base_ref }}
+          git fetch -u origin main
       - name: Running linter, checking breaking changes
         run: |
           buf check lint
-          buf check breaking --against-input ".git#branch=${{ github.base_ref }}"
+          buf check breaking --against-input ".git#branch=main"
       - name: Installing protoc-gen-go
         run: |
           go get github.com/golang/protobuf/protoc-gen-go
